@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import TableOrders from '@/components/tableOrders.tsx';
 import Table from '@/components/table.tsx';
 import TableModal from '@/components/tablemodal.tsx';
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 	
 const style = {
   position: 'absolute',
@@ -45,8 +47,8 @@ export default function Home({params}: Params){
 		async function fetchData(){
 		try{
 			const [res1, res2] = await Promise.all([
-          			fetch('http://localhost:8000/api/products/'),
-          			fetch(`http://localhost:8000/api/orders/${id}`)]);
+          			fetch(`${API_URL}/api/products/`),
+          			fetch(`${API_URL}/api/orders/${id}`)]);
 
 		        const [json1, json2] = await Promise.all([
           			res1.json(),

@@ -11,6 +11,8 @@ import Table from '@/components/table.tsx';
 import TableOrders from '@/components/tableOrders.tsx';
 import TableModal from '@/components/tablemodal.tsx';
 import { useRouter } from 'next/navigation';
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 	
 const style = {
   position: 'absolute',
@@ -41,7 +43,7 @@ export default function Home({params}: Params){
   const [products, setProducts] = useState([])
 	
 	useEffect(()=>{
-		 fetch('http://localhost:8000/api/products/')
+		 fetch(`${API_URL}/api/products/`)
       		.then(res => res.json())
 		.then(data=>setProducts(data))
 	}, [])

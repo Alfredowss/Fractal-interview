@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import { Button, Stack } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 
 let rows = [
@@ -25,7 +26,7 @@ export default function DataTable() {
 
  const performDelete = (e)=>{
 	let id= e.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-id')
-	fetch(`http://localhost:8000/api/orders/${id}/`, {
+	fetch(`${API_URL}/api/orders/${id}/`, {
   		method: 'DELETE',
 		headers: {
    			 'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ export default function DataTable() {
 
   const router = useRouter();
   useEffect(()=>{
-  	fetch("http://localhost:8000/api/orders/")
+  	fetch(`${API_URL}/api/orders/`)
 	.then(res=> res.json())
 	.then(data=>{
 		rows = []

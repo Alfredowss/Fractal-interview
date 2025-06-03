@@ -7,6 +7,7 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 function createData(
   name: string,
@@ -35,7 +36,7 @@ export default function BasicTable({products, id, setProducts}) {
   };
 
  const handleClick = (e)=>{
-	fetch(`http://localhost:8000/api/orders/${id}/products/`, {
+	fetch(`${API_URL}/api/orders/${id}/products/`, {
    		 method: 'POST',
     		headers: {
       			'Content-Type': 'application/json',

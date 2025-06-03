@@ -1,0 +1,25 @@
+# Use Node.js official image
+FROM node:18-alpine
+
+# Set working directory inside container
+WORKDIR /app
+
+# Copy package.json and package-lock.json (if exists)
+COPY package.json package-lock.json* ./
+
+# Install dependencies
+RUN npm install
+
+# Copy all source files
+COPY . .
+
+COPY .env .env
+
+COPY . .
+
+# Expose port your dev server uses (usually 3000)
+EXPOSE 3000
+
+# Start the dev server
+CMD ["npm", "run", "dev"]
+

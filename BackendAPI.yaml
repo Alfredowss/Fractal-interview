@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Fractal
+  version: 1.0.0
+  description: ''
+servers:
+  - url: localhost
+  - url: ''
+paths:
+  /api/orders/:
+    parameters: []
+    post:
+      summary: Create order
+      parameters:
+        - name: Content-Type
+          in: header
+          required: false
+          example: application/json
+          schema:
+            type: string
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_ids:
+                  type: array
+                  items:
+                    type: integer
+  /api/products/:
+    parameters: []
+    post:
+      summary: Get products
+      parameters:
+        - name: Content-Type
+          in: header
+          required: false
+          example: application/json
+          schema:
+            type: string
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_ids:
+                  type: array
+                  items:
+                    type: integer
+  /api/orders/21/products/1:
+    parameters: []
+    delete:
+      summary: Add a product to an order
+      parameters:
+        - name: Content-Type
+          in: header
+          required: false
+          example: application/json
+          schema:
+            type: string
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_ids:
+                  type: array
+                  items:
+                    type: integer
+  /:
+    parameters: []
+    get:
+      summary: Get orders
+      parameters: []
+      responses: {}
+
